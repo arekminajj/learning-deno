@@ -1,18 +1,13 @@
-import { serve } from "https://deno.land/std@0.63.0/http/server.ts";
-import { getFullName, makePersonOlder, person } from './controllers/people.ts'
+import { Application, Router } from "./deps.ts";
 
-const s = serve({ port: 8000 });
-console.log("http://localhost:8000/");
+const app = new Application();
+const router = new Router();
 
-console.log(person.FirstName)
-console.log(getFullName())
-console.log(person.Age)
-makePersonOlder(10)
-console.log(person.Age)
+router.get("/", (ctx: any) => {
+  ctx.response.body = "main get page";
+});
 
-Deno.writeTextFile("./hello.txt", new Date().toString())
+app.use(router.routes());
+app.use(router.allowedMethods());
 
-for await (const req of s) {
-  let message = 'deno is so cool'
-  req.respond({ body: "Hello World\n" + message });
-} 
+await app.listen({ port: 8000 });

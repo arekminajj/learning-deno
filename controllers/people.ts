@@ -1,15 +1,15 @@
-import { Person } from "../Person.ts"
+import { Person } from "../Person.ts";
 
-export let person:Person = {
-    FirstName: 'Ferdynad',
-    Surname: 'Kiepski',
-    Age: 50
-}
+export let person: Person = {
+  FirstName: "Ferdynad",
+  Surname: "Kiepski",
+  Age: 50,
+};
 
 export function getFullName() {
-    return person.FirstName + ' ' + person.Surname
+  return person.FirstName + " " + person.Surname;
 }
 
 export function makePersonOlder(years: number) {
-    person.Age += years
+  person.Age += years;
 }
